@@ -30,9 +30,9 @@ const Home: NextPage = () => {
         <Script src="./texmath.js" />
       </Head>
 
-      <main className="bg-slate-100 p-8 flex-1 flex flex-col">
+      <main className="flex flex-col flex-1 p-8 bg-slate-100">
 
-        <h1 className="text-4xl mb-5">NoteBook</h1>
+        <h1 className="mb-5 text-4xl">NoteBook</h1>
         <div className="grid grid-cols-2 gap-8">
           <div>
             <textarea name="notetext_area" className="min-w-full min-h-[70%]" onChange={onTextChange}></textarea>
