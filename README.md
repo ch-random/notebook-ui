@@ -25,3 +25,6 @@ npm run dev
 ```
 
 [http://localhost:3000](http://localhost:3000) をブラウザで開く。
+
+## 利用ライブラリ
+- [markdown-it-texmath](https://github.com/goessner/markdown-it-texmath): MarkdownとTeXのレンダラー
