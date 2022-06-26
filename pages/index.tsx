@@ -4,12 +4,22 @@ import { ChangeEvent } from 'react';
 import Script from 'next/script'
 import { Html, Main, NextScript } from 'next/document'
 
-
 const Home: NextPage = () => {
 
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     // const newValue = e.target.value;
   }
+
+  const tm = require('markdown-it-texmath');
+  const md = require('markdown-it')({ html: true })
+    .use(tm, {
+      engine: require('katex'),
+      delimiters: 'dollars',
+      katexOptions: { macros: { "\\RR": "\\mathbb{R}" } }
+    });
+  const str = "Euler\'s identity $e^{i\\pi}+1=0$ is a beautiful formula in $\\RR^2$.";
+
+  const data = md.render(str);
 
   return (
     <div className="min-h-screen">
@@ -20,7 +30,6 @@ const Home: NextPage = () => {
         <Script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js" />
         <Script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js" />
         <Script src="./texmath.js" />
-        <Script src="./main.js" />
       </Head>
 
       <main className="bg-slate-100 p-8 flex-1 flex flex-col">
@@ -31,7 +40,7 @@ const Home: NextPage = () => {
             <textarea className="min-w-full min-h-[70%]" onChange={onChange} value="テキストを入力"></textarea>
           </div>
           <div>
-            <div id="out"></div>
+            <div id="notebook_preview_area" dangerouslySetInnerHTML={{ __html: data }} ></div>
           </div>
         </div>
       </main>
