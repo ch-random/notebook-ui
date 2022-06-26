@@ -45,12 +45,16 @@ const Home: NextPage = () => {
 
       <footer className="flex-1 flex px-8 border-t-[1] border-solid border-[#eaeaea] justify-center items-center">
 
-        <p>Powered by {' '}<a
+        <p>Developed by {' '} <a
+          href="https://twitter.com/tomo0611_tech"
+          target="_blank"
+          rel="noopener noreferrer"
+        >@tomo0611_tech</a>&lang;<a
           href="https://ch-random.net/"
           target="_blank"
           rel="noopener noreferrer"
-        >CH-RANDOM
-        </a></p>
+        >C.H. RANDOM
+        </a>&rang;</p>
       </footer>
     </div>
   )
