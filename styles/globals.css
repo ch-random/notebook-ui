@@ -29,4 +29,7 @@ a {
   blockquote {
     background-color: revert;
   }
+  code {
+    background: revert;
+  }
 }
