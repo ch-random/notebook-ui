@@ -43,9 +43,9 @@ const Home: NextPage = () => {
         </div>
       </main>
 
-      <footer className="flex-1 flex px-8 border-t-[1] border-solid border-[#eaeaea] justify-center items-center">
+      <footer className="flex-1 flex px-8 bg-slate-700 mt-[1] text-slate-50 justify-center items-center place-items-center">
 
-        <p>Developed by {' '} <a
+        <p className="pt-2">Developed by {' '} <a
           href="https://twitter.com/tomo0611_tech"
           target="_blank"
           rel="noopener noreferrer"
