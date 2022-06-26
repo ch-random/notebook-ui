@@ -3,23 +3,21 @@ import Head from 'next/head'
 import { ChangeEvent } from 'react';
 import Script from 'next/script'
 import { Html, Main, NextScript } from 'next/document'
+import { useState } from "react";
 
 const Home: NextPage = () => {
 
-  const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    // const newValue = e.target.value;
-  }
-
   const tm = require('markdown-it-texmath');
   const md = require('markdown-it')({ html: true })
-    .use(tm, {
-      engine: require('katex'),
-      delimiters: 'dollars',
-      katexOptions: { macros: { "\\RR": "\\mathbb{R}" } }
-    });
-  const str = "Euler\'s identity $e^{i\\pi}+1=0$ is a beautiful formula in $\\RR^2$.";
+    .use(tm, { delimiters: 'dollars' });
 
-  const data = md.render(str);
+  const [previewHtmlData, setPreviewHtmlData] = useState("");
+
+  const onTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = e.target.value;
+    console.log(md.render(newValue));
+    setPreviewHtmlData(md.render(newValue));
+  }
 
   return (
     <div className="min-h-screen">
@@ -37,10 +35,10 @@ const Home: NextPage = () => {
         <h1 className="text-4xl mb-5">NoteBook</h1>
         <div className="grid grid-cols-2 gap-8">
           <div>
-            <textarea className="min-w-full min-h-[70%]" onChange={onChange} value="テキストを入力"></textarea>
+            <textarea name="notetext_area" className="min-w-full min-h-[70%]" onChange={onTextChange}></textarea>
           </div>
           <div>
-            <div id="notebook_preview_area" dangerouslySetInnerHTML={{ __html: data }} ></div>
+            <div id="notebook_preview_area" dangerouslySetInnerHTML={{ __html: previewHtmlData }} ></div>
           </div>
         </div>
       </main>
